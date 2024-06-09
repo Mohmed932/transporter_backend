@@ -60,12 +60,12 @@ export const getSport = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-export const getCulture = async (req, res) => {
+export const getScience = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const skiPage = (page - 1) * limit;
-    const Category = await News.find({ kind: "culture" })
+    const Category = await News.find({ kind: "science" })
       .sort({ createdAt: -1 })
       .limit(limit)
       .skip(skiPage)
@@ -111,6 +111,21 @@ export const getHealth = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const skiPage = (page - 1) * limit;
     const Category = await News.find({ kind: "health" })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .skip(skiPage)
+      .exec();
+    return res.json(Category);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+export const getCulture = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skiPage = (page - 1) * limit;
+    const Category = await News.find({ kind: "culture" })
       .sort({ createdAt: -1 })
       .limit(limit)
       .skip(skiPage)

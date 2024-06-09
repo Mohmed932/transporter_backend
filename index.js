@@ -3,6 +3,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import {config} from "dotenv"
 import { CategoryRoute } from "./Route/Category.js";
+import { HomeRoute } from "./Route/News.js";
+import { SubscribeRoute } from "./Route/Subscribe.js";
 
 
 config();
@@ -11,6 +13,8 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 server.use(CategoryRoute);
+server.use(HomeRoute);
+server.use(SubscribeRoute);
 server.get("/", (req, res) => {
   try {
     return res.json({ message: "Hello world" });

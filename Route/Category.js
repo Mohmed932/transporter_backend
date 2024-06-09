@@ -1,13 +1,12 @@
 import { Router } from "express";
 import {
-  getAfrica,
-  getAmerica,
   getArab,
   getBusiness,
   getCulture,
   getHealth,
   getPalestine,
   getPolitics,
+  // getScience,
   getSport,
   getTechnology,
   getWorld,
@@ -15,15 +14,14 @@ import {
 
 export const CategoryRoute = Router();
 
-CategoryRoute.route("/politics").get(getPolitics);
-CategoryRoute.route("/world").get(getWorld);
-CategoryRoute.route("/Business").get(getBusiness);
-CategoryRoute.route("/sport").get(getSport);
-CategoryRoute.route("/culture").get(getCulture);
-CategoryRoute.route("/technology").get(getTechnology);
-CategoryRoute.route("/arab").get(getArab);
-CategoryRoute.route("/health").get(getHealth);
-CategoryRoute.route("/africa").get(getAfrica);
-CategoryRoute.route("/america").get(getAmerica);
-CategoryRoute.route("/palestine").get(getPalestine);
+CategoryRoute.route("/category/politics").get(getPolitics);
+CategoryRoute.route("/category/world").get(getWorld);
+CategoryRoute.route("/category/business").get(getBusiness);
+CategoryRoute.route("/category/sport").get(getSport);
+// CategoryRoute.route("/category/science").get(getScience);
+CategoryRoute.route("/category/technology").get(getTechnology);
+CategoryRoute.route("/category/arab").get(getArab);
+CategoryRoute.route("/category/health").get(getHealth);
+CategoryRoute.route("/category/culture").get(getCulture);
+CategoryRoute.route("/category/palestine").get(getPalestine);
 
