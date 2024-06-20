@@ -25,8 +25,9 @@ server.get("/", (req, res) => {
 
 
 mongoose.connect(process.env.MONGODB_URL).then(()=>{
-  server.listen(5000, () => {
-    console.log("server listening on port 5000");
+  const port = process.env.PORT || 4000;
+  server.listen(port, () => {
+    console.log(`server listening on port ${port}`);
   });
 }).catch(()=>{
   console.log("Connect to Mongoose failed")
