@@ -3,9 +3,9 @@ import { News } from "../Model/News.js";
 export const getTopnews = async (req, res) => {
   try {
     const topNews = await News.find()
-    .sort({ createdAt: -1, views: -1 })
-    .limit(4)
-    .lean();
+      .sort({ createdAt: -1, views: -1 })
+      .limit(4)
+      .lean();
     return res.json({ topNews });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -122,6 +122,17 @@ export const getSingleNews = async (req, res) => {
         .json({ message: "this news not found or has been deleted" });
     }
     return res.json(singleNews);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const SearchResult = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const filter = query ? { title: { $regex: query, $options: "i" } } : {};
+    const data = await News.find(filter);
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

@@ -138,7 +138,7 @@ export const getCulture = async (req, res) => {
 export const getAfrica = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const limit = parseInt(req.query.limit) || 9;
     const skiPage = (page - 1) * limit;
     const Category = await News.find({ kind: "africa" })
       .sort({ createdAt: -1 })

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  SearchResult,
   getBreakingNews,
   getBusinessNews,
   getCultureNews,
@@ -16,6 +17,7 @@ import {
 
 export const HomeRoute = Router();
 
+HomeRoute.route("/news/search").get(SearchResult);
 HomeRoute.route("/topnews").get(getTopnews);
 HomeRoute.route("/breakingnews").get(getBreakingNews);
 HomeRoute.route("/section/politics").get(getPoliticsNews);
