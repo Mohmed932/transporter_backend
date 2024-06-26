@@ -6,6 +6,7 @@ import { CategoryRoute } from "./Route/Category.js";
 import { HomeRoute } from "./Route/News.js";
 import { SubscribeRoute } from "./Route/Subscribe.js";
 import { MailToDatebase } from "./Utility/MailToDatebase.js";
+import { CategoryXmlRoute } from "./Route/CategoryFeed.js";
 
 
 config();
@@ -14,6 +15,7 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 server.use(CategoryRoute);
+server.use(CategoryXmlRoute);
 server.use(HomeRoute);
 server.use(SubscribeRoute);
 server.get("/", (req, res) => {

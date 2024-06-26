@@ -6,7 +6,6 @@ import {
   getHealth,
   getPalestine,
   getPolitics,
-  // getScience,
   getSport,
   getTechnology,
   getWorld,
