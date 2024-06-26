@@ -33,7 +33,6 @@ mongoose.connect(process.env.MONGODB_URL).then(()=>{
   const port = process.env.PORT || 5000;
   server.listen(port, () => {
     console.log(`server listening on port ${port}`);
-     MailToDatebase();
   });
 }).catch(()=>{
   console.log("Connect to Mongoose failed")
