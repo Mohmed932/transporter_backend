@@ -5,6 +5,7 @@ import {config} from "dotenv"
 import { CategoryRoute } from "./Route/Category.js";
 import { HomeRoute } from "./Route/News.js";
 import { SubscribeRoute } from "./Route/Subscribe.js";
+import { MailToDatebase } from "./Utility/MailToDatebase.js";
 
 
 config();
@@ -24,10 +25,15 @@ server.get("/", (req, res) => {
 });
 
 
+setInterval(async () => {
+  await MailToDatebase();
+}, 1000 * 60 * 60 * 24);
+
 mongoose.connect(process.env.MONGODB_URL).then(()=>{
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 5000;
   server.listen(port, () => {
     console.log(`server listening on port ${port}`);
+     MailToDatebase();
   });
 }).catch(()=>{
   console.log("Connect to Mongoose failed")
